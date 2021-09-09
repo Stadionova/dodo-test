@@ -9,17 +9,17 @@ export const schedule = {
     saturday: "11:00",
     sunday: "12:00"
 };
-
-export function transform(arg: any) {
+// reduce
+export function transform(arg) {
     const newSchedule = {};
-
-    for (let key in arg) {
+    for (let key in arg) { // key = monday
         let newKey = arg[key]; // 10:00
         if (!newSchedule[newKey]) {
             newSchedule[newKey] = [key];
         } else {
-            console.log("newKey ", newSchedule[newKey]);
-            newSchedule[newKey] = newSchedule[newKey].push(key);
+            let currentArr = newSchedule[newKey];
+            currentArr.push(key);
+            newSchedule[newKey] = currentArr;
         }
     }
     console.log("newSchedule ", newSchedule);
@@ -29,9 +29,9 @@ export function transform(arg: any) {
 transform(schedule);
 
 // "10:00": ["monday", "thursday"],
-//       "11:00": ["wednesday", "saturday"],
-//       "12:00": ["tuesday", "sunday"],
-//       "15:00": ["friday"]
+// "11:00": ["wednesday", "saturday"],
+// "12:00": ["tuesday", "sunday"],
+// "15:00": ["friday"]
 
 export const Task1: FC = () => {
     return (
