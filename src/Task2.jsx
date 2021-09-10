@@ -1,14 +1,19 @@
-import React, { FC, useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { AddPizzeriaButton } from "./AddPizzeriaButton";
 import { PizzeriasCount } from "./PizzeriasCount";
 
-export const Task2: FC = () => {
+export const Task2 = () => {
     const [countPizza, setCountPizza] = useState();
+    useEffect(async () => {
+        const countPizza = await fetch(
+            "https://globalapi.dodopizza.com/api/v1/pizzerias/count"
+        ).then((response) => response.json());
+        setCountPizza(countPizza.total);
+        return countPizza;
+    }, []);
     return (
         <>
             <h1>Задача 2</h1>
-
             <ol>
                 <li>
                     Сделать вызов на урл
@@ -37,11 +42,9 @@ export const Task2: FC = () => {
                     Flexbox
                 </li>
             </ol>
-
             <hr />
-
             <PizzeriasCount countPizza={countPizza} />
-            <AddPizzeriaButton setCountPizza={setCountPizza} />
+            <AddPizzeriaButton setCountPizza={setCountPizza} countPizza={countPizza} />
         </>
     );
 };

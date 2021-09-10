@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 
 export const schedule = {
     monday: "10:00",
@@ -9,11 +9,11 @@ export const schedule = {
     saturday: "11:00",
     sunday: "12:00"
 };
-// reduce
+
 export function transform(arg) {
     const newSchedule = {};
-    for (let key in arg) { // key = monday
-        let newKey = arg[key]; // 10:00
+    for (let key in arg) {
+        let newKey = arg[key];
         if (!newSchedule[newKey]) {
             newSchedule[newKey] = [key];
         } else {
@@ -22,18 +22,12 @@ export function transform(arg) {
             newSchedule[newKey] = currentArr;
         }
     }
-    console.log("newSchedule ", newSchedule);
     return newSchedule;
 }
 
 transform(schedule);
 
-// "10:00": ["monday", "thursday"],
-// "11:00": ["wednesday", "saturday"],
-// "12:00": ["tuesday", "sunday"],
-// "15:00": ["friday"]
-
-export const Task1: FC = () => {
+export const Task1 = () => {
     return (
         <div>
             <h1>Задача 1</h1>

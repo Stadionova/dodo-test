@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -7,9 +7,9 @@ const StyledButton = styled.button`
   color: white;
 `;
 
-export const AddPizzeriaButton: FC = (props) => {
+export const AddPizzeriaButton = (props) => {
   return (
-    <StyledButton onClick={props.setCountPizza}>
+    <StyledButton onClick={() => props.setCountPizza(props.countPizza + 1)}>
       Добавить новую пиццерию
     </StyledButton>
   );
