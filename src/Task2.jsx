@@ -4,12 +4,15 @@ import { PizzeriasCount } from "./PizzeriasCount";
 
 export const Task2 = () => {
     const [countPizza, setCountPizza] = useState();
-    useEffect(async () => {
-        const countPizza = await fetch(
-            "https://globalapi.dodopizza.com/api/v1/pizzerias/count"
-        ).then((response) => response.json());
-        setCountPizza(countPizza.total);
-        return countPizza;
+    useEffect(() => {
+        async function fetchData() {
+            const countPizza = await fetch(
+                "https://globalapi.dodopizza.com/api/v1/pizzerias/count"
+            ).then((response) => response.json());
+            setCountPizza(countPizza.total);
+            return countPizza;
+        }
+        fetchData();
     }, []);
     return (
         <>
