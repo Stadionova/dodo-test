@@ -16,7 +16,7 @@ export const Task2 = () => {
         fetchData();
     }, []);
 
-    let [persons, getPersons] = useState();
+    const [persons, getPersons] = useState();
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/users`)
             .then(res => {
