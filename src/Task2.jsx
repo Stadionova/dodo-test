@@ -24,6 +24,18 @@ export const Task2 = () => {
                 return persons;
             })
     });
+
+    const user = {
+        name: 'John'
+    };
+
+    useEffect(() => {
+        axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+    }, []);
     return (
         <>
             <h1>Задача 2</h1>
